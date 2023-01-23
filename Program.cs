@@ -32,7 +32,7 @@ class Zoo
 
             if (userChoice == CommandWalk)
             {
-                _aviaries[ChooseNumberAviary()].ShowDescription();
+                _aviaries[ChooseIndexAviary()].ShowDescription();
             }
             else if (userChoice == CommandExit)
             {
@@ -41,10 +41,10 @@ class Zoo
         }
     }
 
-    private int ChooseNumberAviary()
+    private int ChooseIndexAviary()
     {
         int firstIndex = 1;
-        Console.WriteLine("Для осмотра одного из вольеров, введите любую цифру от " + firstIndex + " до " + _aviaries.Capacity);         
+        Console.WriteLine("Для осмотра одного из вольеров, введите любую цифру от " + firstIndex + " до " + _aviaries.Capacity);
         return GetNumber(_aviaries.Capacity) - 1;
     }
 
@@ -89,9 +89,7 @@ class Zoo
         speciesBirds.Add(new Animal("Гималайский монал", "Жёнщина", "Того рот монал"));
         speciesBirds.Add(new Animal("Такахе", "Самка", "молчу и точка"));
 
-        Aviary birds = new Aviary("это птицы, они здесь жрут и срут", speciesBirds);
-
-        return birds;
+        return new Aviary("это птицы, они здесь жрут и срут", speciesBirds);
     }
 
     private Aviary AddSpeciesRedPanda()
@@ -104,9 +102,7 @@ class Zoo
         speciesPandas.Add(new Animal("Красная панда", "самец", "Играт"));
         speciesPandas.Add(new Animal("Красная панда", "самка", "Кушат"));
 
-        Aviary redPandas = new Aviary("Милые красные пандочки", speciesPandas);
-
-        return redPandas;
+        return new Aviary("Милые красные пандочки", speciesPandas);
     }
 
     private Aviary AddSpeciesCrocodile()
@@ -119,9 +115,7 @@ class Zoo
         speciesCrocodile.Add(new Animal("Острорылый", "самка", "буль буль"));
         speciesCrocodile.Add(new Animal("Африканский", "самец", "короткие лапки, но как остры зубы"));
 
-        Aviary crocodiles = new Aviary("Разные виды крок одилов, позже расширим вольер и добавим еще виды", speciesCrocodile);
-
-        return crocodiles;
+        return new Aviary("Разные виды крок одилов, позже расширим вольер и добавим еще виды", speciesCrocodile);
     }
 
     private Aviary AddSpeciesZebra()
@@ -134,9 +128,7 @@ class Zoo
         speciesZebra.Add(new Animal("Саванная", "самец", "я Марти"));
         speciesZebra.Add(new Animal("Сулусская", "самка", "и я Марти"));
 
-        Aviary zebras = new Aviary("Зебры, все они не Марти", speciesZebra);
-
-        return zebras;
+        return new Aviary("Зебры, все они не Марти", speciesZebra);
     }
 }
 
@@ -144,7 +136,7 @@ class Aviary
 {
     private List<Animal> _animals = new List<Animal>();
 
-    public Aviary(string description,List<Animal> animals)
+    public Aviary(string description, List<Animal> animals)
     {
         Description = description;
         _animals = animals;
