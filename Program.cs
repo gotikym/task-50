@@ -32,7 +32,7 @@ class Zoo
 
             if (userChoice == CommandWalk)
             {
-                ShowInfo();
+                _aviaries[ChooseAviary()].ShowDescription();
             }
             else if (userChoice == CommandExit)
             {
@@ -41,14 +41,12 @@ class Zoo
         }
     }
 
-    private void ShowInfo()
+    private int ChooseAviary()
     {
-        int defoltIndex = 1;
-        int adjustIndex = -1;
-        Console.WriteLine("Для осмотра одного из вольеров, введите любую цифру от " + defoltIndex + " до " + _aviaries.Capacity);
-        adjustIndex += GetNumber(_aviaries.Capacity);
-
-        _aviaries[adjustIndex].ShowDescription();
+        int firstIndex = 1;
+        Console.WriteLine("Для осмотра одного из вольеров, введите любую цифру от " + firstIndex + " до " + _aviaries.Capacity);
+        int index = GetNumber(_aviaries.Capacity) - 1;
+        return index;
     }
 
     private int GetNumber(int listCapacity)
@@ -80,71 +78,71 @@ class Zoo
         _aviaries.Add(AddSpeciesRedPanda());
         _aviaries.Add(AddSpeciesCrocodile());
         _aviaries.Add(AddSpeciesZebra());
-
     }
 
     private Aviary AddSpeciesBirds()
     {
-        Aviary Birds = new Aviary("это птицы, они здесь жрут и срут");
+        Aviary birds = new Aviary("это птицы, они здесь жрут и срут");
 
-        Birds.AddAnimal(new Animal("Черноголовый трагопан", "Пацан", "Ой бой"));
-        Birds.AddAnimal(new Animal("Бульверова лофура", "Не совсем пацан", "Лоуфрэс прэс трэс"));
-        Birds.AddAnimal(new Animal("Глазчатая индейка", "Точно не пацан", "Курлык бурлык"));
-        Birds.AddAnimal(new Animal("Гималайский монал", "Жёнщина", "Того рот монал"));
-        Birds.AddAnimal(new Animal("Такахе", "Самка", "молчу и точка"));
+        birds.AddAnimal(new Animal("Черноголовый трагопан", "Пацан", "Ой бой"));
+        birds.AddAnimal(new Animal("Бульверова лофура", "Не совсем пацан", "Лоуфрэс прэс трэс"));
+        birds.AddAnimal(new Animal("Глазчатая индейка", "Точно не пацан", "Курлык бурлык"));
+        birds.AddAnimal(new Animal("Гималайский монал", "Жёнщина", "Того рот монал"));
+        birds.AddAnimal(new Animal("Такахе", "Самка", "молчу и точка"));
 
-        return Birds;
+        return birds;
     }
 
     private Aviary AddSpeciesRedPanda()
     {
-        Aviary RedPandas = new Aviary("Милые красные пандочки");
+        Aviary redPandas = new Aviary("Милые красные пандочки");
 
-        RedPandas.AddAnimal(new Animal("Красная панда", "самец", "Кушат"));
-        RedPandas.AddAnimal(new Animal("Красная панда", "самка", "Играт"));
-        RedPandas.AddAnimal(new Animal("Красная панда", "самец", "Кушат"));
-        RedPandas.AddAnimal(new Animal("Красная панда", "самец", "Играт"));
-        RedPandas.AddAnimal(new Animal("Красная панда", "самка", "Кушат"));
+        redPandas.AddAnimal(new Animal("Красная панда", "самец", "Кушат"));
+        redPandas.AddAnimal(new Animal("Красная панда", "самка", "Играт"));
+        redPandas.AddAnimal(new Animal("Красная панда", "самец", "Кушат"));
+        redPandas.AddAnimal(new Animal("Красная панда", "самец", "Играт"));
+        redPandas.AddAnimal(new Animal("Красная панда", "самка", "Кушат"));
 
-        return RedPandas;
+        return redPandas;
     }
 
     private Aviary AddSpeciesCrocodile()
     {
-        Aviary Crocodiles = new Aviary("Разные виды крокодилов, позже расширим вольер и добавим еще виды");
+        Aviary crocodiles = new Aviary("Разные виды крокодилов, позже расширим вольер и добавим еще виды");
 
-        Crocodiles.AddAnimal(new Animal("Гребнистый", "самец", "сожру тебя"));
-        Crocodiles.AddAnimal(new Animal("Нильский", "самец", "добрый, но сожру тебя"));
-        Crocodiles.AddAnimal(new Animal("Болотный", "самка", "люблю плавать"));
-        Crocodiles.AddAnimal(new Animal("Острорылый", "самка", "буль буль"));
-        Crocodiles.AddAnimal(new Animal("Африканский", "самец", "короткие лапки, но как остры зубы"));
+        crocodiles.AddAnimal(new Animal("Гребнистый", "самец", "сожру тебя"));
+        crocodiles.AddAnimal(new Animal("Нильский", "самец", "добрый, но сожру тебя"));
+        crocodiles.AddAnimal(new Animal("Болотный", "самка", "люблю плавать"));
+        crocodiles.AddAnimal(new Animal("Острорылый", "самка", "буль буль"));
+        crocodiles.AddAnimal(new Animal("Африканский", "самец", "короткие лапки, но как остры зубы"));
 
-        return Crocodiles;
+        return crocodiles;
     }
 
     private Aviary AddSpeciesZebra()
     {
-        Aviary Zebras = new Aviary("Зебры, все они не Марти");
+        Aviary zebras = new Aviary("Зебры, все они не Марти");
 
-        Zebras.AddAnimal(new Animal("Греви", "самка", "тыгыдык, тыгыдык"));
-        Zebras.AddAnimal(new Animal("Горная", "самка", "игого бл"));
-        Zebras.AddAnimal(new Animal("Капская", "самец", "я не Марти"));
-        Zebras.AddAnimal(new Animal("Саванная", "самец", "я Марти"));
-        Zebras.AddAnimal(new Animal("Сулусская", "самка", "и я Марти"));
+        zebras.AddAnimal(new Animal("Греви", "самка", "тыгыдык, тыгыдык"));
+        zebras.AddAnimal(new Animal("Горная", "самка", "игого бл"));
+        zebras.AddAnimal(new Animal("Капская", "самец", "я не Марти"));
+        zebras.AddAnimal(new Animal("Саванная", "самец", "я Марти"));
+        zebras.AddAnimal(new Animal("Сулусская", "самка", "и я Марти"));
 
-        return Zebras;
+        return zebras;
     }
 }
 
 class Aviary
 {
-    public string Description { get; private set; }
     private List<Animal> _animals = new List<Animal>();
 
     public Aviary(string description)
     {
         Description = description;
     }
+
+    public string Description { get; private set; }
 
     public virtual void ShowDescription()
     {
@@ -170,14 +168,14 @@ class Aviary
 
 class Animal
 {
-    public string Name { get; private set; }
-    public string Gender { get; private set; }
-    public string Sound { get; private set; }
-
     public Animal(string name, string gender, string sound)
     {
         Name = name;
         Gender = gender;
         Sound = sound;
     }
+
+    public string Name { get; private set; }
+    public string Gender { get; private set; }
+    public string Sound { get; private set; }
 }
